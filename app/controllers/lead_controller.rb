@@ -1,0 +1,2 @@
+class LeadController < ApplicationController
+end

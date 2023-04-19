@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  e_mail: MyString
+  phone_number: MyString
+  price_range_low: 1
+  price_range_high: 1
+  salary: 1
+  current_city: MyString
+  move_in_city: MyString
+  credit_score: 1
+
+two:
+  name: MyString
+  e_mail: MyString
+  phone_number: MyString
+  price_range_low: 1
+  price_range_high: 1
+  salary: 1
+  current_city: MyString
+  move_in_city: MyString
+  credit_score: 1
