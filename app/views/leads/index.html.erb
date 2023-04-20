@@ -1,0 +1,29 @@
+<%= render template: "leads/new" %>
+
+<h3>Leads</h3>
+
+<table>
+  <thead>
+    <tr>
+      <% (Lead.attribute_names - ["id", "created_at", "updated_at"]).each do |attribute| %>
+        <th><%= attribute.humanize %></th>
+      <% end %>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @leads.each do |lead| %>
+      <tr>
+        <% (Lead.attribute_names - ["id", "created_at", "updated_at"]).each do |attribute| %>
+          <td><%= lead[attribute] %></td>
+        <% end %>
+        <td><%= link_to "Edit", edit_lead_path(lead) %></td>
+        <td><%= link_to "Delete", lead_path(lead), data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?"
+        } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
