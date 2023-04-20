@@ -37,15 +37,13 @@ Note: click header to sort by that column
         const table = document.querySelector('.lead-table');
         table.querySelectorAll('th').forEach(header => {
             header.addEventListener('click', () => {
-                const sortBy = header.dataset.sort;
                 const direction = header.classList.toggle('sort-asc') ? 1 : -1;
                 const sortedRows = Array.from(table.querySelectorAll('tbody tr'))
                     .sort((a, b) => {
                         const aCol = a.querySelector(`td:nth-child(${header.cellIndex + 1})`).textContent.trim();
                         const bCol = b.querySelector(`td:nth-child(${header.cellIndex + 1})`).textContent.trim();
-                        return aCol > bCol ? (1 * direction) : (-1 * direction);
+                        return aCol.localeCompare(bCol, undefined, {numeric: true}) * direction;
                     });
-
                 table.querySelector('tbody').append(...sortedRows);
             });
         });
