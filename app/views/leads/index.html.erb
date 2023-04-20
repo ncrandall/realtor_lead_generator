@@ -1,0 +1,51 @@
+<%= render template: "leads/new" %>
+
+<h3>Leads</h3>
+
+Note: click header to sort by that column
+
+<table class="lead-table">
+  <thead>
+    <tr>
+      <% (Lead.attribute_names - ["id", "created_at", "updated_at"]).each do |attribute| %>
+        <th data-sort="<%= attribute %>">
+          <%= attribute.humanize %>
+        </th>
+      <% end %>
+      <th data-sort="edit">Edit</th>
+      <th data-sort="delete">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @leads.each do |lead| %>
+      <tr>
+        <% (Lead.attribute_names - ["id", "created_at", "updated_at"]).each do |attribute| %>
+          <td><%= lead[attribute] %></td>
+        <% end %>
+        <td><%= link_to "Edit", edit_lead_path(lead) %></td>
+        <td><%= link_to "Delete", lead_path(lead), data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?"
+        } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const table = document.querySelector('.lead-table');
+        table.querySelectorAll('th').forEach(header => {
+            header.addEventListener('click', () => {
+                const direction = header.classList.toggle('sort-asc') ? 1 : -1;
+                const sortedRows = Array.from(table.querySelectorAll('tbody tr'))
+                    .sort((a, b) => {
+                        const aCol = a.querySelector(`td:nth-child(${header.cellIndex + 1})`).textContent.trim();
+                        const bCol = b.querySelector(`td:nth-child(${header.cellIndex + 1})`).textContent.trim();
+                        return aCol.localeCompare(bCol, undefined, {numeric: true}) * direction;
+                    });
+                table.querySelector('tbody').append(...sortedRows);
+            });
+        });
+    });
+</script>

@@ -1,0 +1,21 @@
+<div class="formContainer">
+  <%= form_with model: model do |form| %>
+
+    <% attributes.each do |attribute| %>
+      <div class="inputContainer">
+        <%= form.label attribute %><br>
+        <%= form.text_field attribute %><br>
+
+        <% @lead.errors.full_messages_for(attribute).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <br/>
+
+    <div class="submitButton">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
