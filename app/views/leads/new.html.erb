@@ -1,0 +1,4 @@
+<div>
+  <h2>Input New Lead</h2>
+  <%= render "common/form", model: @lead, attributes: @lead.attribute_names - ["id", "created_at", "updated_at"] %>
+</div>
