@@ -15,5 +15,56 @@
  */
 
 .formContainer {
+    margin: 20px;
+}
+
+.inputContainer {
+    margin-bottom: 10px;
+}
+
+.formInput {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.formError {
+    color: red;
+    font-size: small;
+}
+
+.formButton {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.formButton:hover {
+    background-color: #0069d9;
+}
+
+.lead-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 16px;
+}
+
+.lead-table thead {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+.lead-table th, .lead-table td {
     padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.lead-table tr:hover {
+    background-color: #f5f5f5;
 }
